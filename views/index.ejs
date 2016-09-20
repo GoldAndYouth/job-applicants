@@ -1,0 +1,41 @@
+<html>
+
+  <head>
+  
+    <title>HO App</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script src="javascripts/applicantsApp.js"></script>
+
+  </head>
+
+  <body ng-app="app" ng-controller="HomeCtrl">
+
+    <ui-view></ui-view>
+    
+    <!-- start of /home template. -->
+    <script type="text/ng-template" id="/home.html">
+      <div ng-repeat="applicant in applicants">
+        <a href="#/applicants/{{$index}}">
+          <!--
+          :: used for one-time data binding of static data. This is faster, and we don't want to dynamically update at this point.
+          !-->
+          {{::applicant.title}}
+        </a>
+      </div>
+    </script>
+    <!-- end /home template -->
+
+    <!-- start of /applicants template -->
+    <script type="text/ng-template" id="/applicants.html">
+      <div class="applicants-header">
+        <span>{{::applicant.title}}</span>
+        <span>{{::applicant.employment}}</span>
+      </div>
+    </script>
+    <!-- end of /applicants template -->
+
+  </body>
+
+</html>
